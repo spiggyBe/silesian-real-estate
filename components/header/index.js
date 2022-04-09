@@ -48,10 +48,9 @@ function Header() {
                 <div
                     className="z-50 flex relative w-8 h-8 flex-col justify-around items-center cursor-pointer md:hidden"
                     onClick={handleOpenClose}>
-                    {/* hamburger button */}
-                    <span className={`h-0.5 w-full bg-gray-600 rounded-lg transform transition duration-300 ease-in-out ${open ? "rotate-45 translate-y-2.5" : null}`} />
-                    <span className={`h-0.5 w-full bg-gray-600 rounded-lg transition-all duration-300 ease-in-out ${open ? "w-0" : "w-full"}`} />
-                    <span className={`h-0.5 w-full bg-gray-600 rounded-lg transform transition duration-300 ease-in-out ${open ? "-rotate-45 -translate-y-2.5" : null}`} />
+                    <span className={`h-1 w-full bg-purple-500 rounded-lg transform transition duration-300 ease-in-out ${open ? "rotate-45 translate-y-2.5" : null}`} />
+                    <span className={`h-1 w-full bg-purple-500 rounded-lg transition-all duration-300 ease-in-out ${open ? "w-0" : "w-full"}`} />
+                    <span className={`h-1 w-full bg-purple-500 rounded-lg transform transition duration-300 ease-in-out ${open ? "-rotate-45 -translate-y-2.5" : null}`} />
                 </div>
             </div>
         </header>
@@ -65,12 +64,12 @@ function MobileNav({ open, handleOpenClose }) {
         <div className={`absolute top-24 left-0 h-screen w-screen bg-white transform ${open ? "-translate-x-0" : "-translate-x-full"} transition-transform duration-300 ease-in-out filter drop-shadow-md md:hidden`}>
             <div className="flex flex-col items-end pr-4">
                 <Link href='/nieruchomosci'>
-                    <a className="text-basic my-4" onClick={() => setTimeout(() => { handleOpenClose() }, 100)}>
+                    <a className="text-lg my-4 text-purple-500" >
                         Nieruchomości
                     </a>
                 </Link>
                 <Link href='/blog'>
-                    <a className="text-basic" onClick={() => setTimeout(() => { handleOpenClose() }, 100)}>
+                    <a className="text-lg text-purple-500" >
                         Blog
                     </a>
                 </Link>
