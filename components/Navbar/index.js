@@ -4,7 +4,7 @@ import logo from '../../public/logo.png'
 import Link from 'next/link'
 import { SearchIcon } from '@heroicons/react/outline'
 
-function Header() {
+function Navbar() {
 
     const [open, setOpen] = useState(false)
 
@@ -19,7 +19,7 @@ function Header() {
                 href='/'
                 passHref
             >
-                <div className='relative flex items-center cursor-pointer'>
+                <div className='relative flex items-center cursor-pointer space-x-2'>
                     <Image
                         src={logo}
                         width={50}
@@ -28,7 +28,7 @@ function Header() {
                         objectPosition='left'
                         alt='logo'
                     />
-                    <span className='hidden md:inline-block text-sm pl-4 md:text-lg' >Silesia Real Estate</span>
+                    <span className='hidden text-gray-600 text-sm md:inline-block md:text-lg'>Silesia Real Estate</span>
                 </div>
             </Link>
             <div className='flex items-center md:border-2 rounded-full p-2 md:shadow-sm'>
@@ -57,19 +57,30 @@ function Header() {
     )
 }
 
-export default Header
+export default Navbar
 
 function MobileNav({ open, handleOpenClose }) {
     return (
-        <div className={`absolute top-24 left-0 h-screen w-screen bg-white transform ${open ? "-translate-x-0" : "-translate-x-full"} transition-transform duration-300 ease-in-out filter drop-shadow-md md:hidden`}>
+        <div className={`flex justify-end absolute top-[85px] left-0 h-screen w-screen bg-white transform ${open ? "-translate-x-0" : "-translate-x-full"} transition-transform duration-300 ease-in-out filter drop-shadow-md md:hidden`}>
             <div className="flex flex-col items-end pr-4">
+                <Link href='/'>
+                    <a
+                        className="text-lg text-purple-500"
+                        onClick={handleOpenClose}>
+                        Główna
+                    </a>
+                </Link>
                 <Link href='/nieruchomosci'>
-                    <a className="text-lg my-4 text-purple-500" >
+                    <a
+                        className="text-lg text-purple-500"
+                        onClick={handleOpenClose}>
                         Nieruchomości
                     </a>
                 </Link>
                 <Link href='/blog'>
-                    <a className="text-lg text-purple-500" >
+                    <a
+                        className="text-lg text-purple-500"
+                        onClick={handleOpenClose}>
                         Blog
                     </a>
                 </Link>
