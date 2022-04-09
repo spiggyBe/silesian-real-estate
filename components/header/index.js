@@ -20,18 +20,22 @@ function Header() {
                         objectPosition='left'
                         alt='logo'
                     />
-                    <span className='inline-block text-2xl pl-4' >Silesia Real Estate</span>
+                    <span className='inline-block text-sm pl-4 md:text-lg' >Silesia Real Estate</span>
                 </div>
             </Link>
             <div className='flex items-center md:border-2 rounded-full p-2 md:shadow-sm'>
                 <input
-                    className='flex-grow pl-5 transparent outline-none'
+                    className='flex-grow pl-5 transparent outline-none text-sm text-gray-600 placeholder-gray-300'
                     type='text'
-                    placeholder='What are you looking for...'
+                    placeholder='Szukaj...'
                 />
-                <SearchIcon className='hidden md:inline-flex h-8 bg-purple-500 text-white rounded-full p-2 cursor-pointer md:mx-2' />
+                <SearchIcon className='hidden md:flex h-8 bg-purple-500 text-white rounded-full p-2 cursor-pointer md:mx-2' />
             </div>
-            <div></div>
+            <ul className='flex flex-col h-60 items-center md:justify-around '>
+                <Link href='/'><a className='text-purple-500 cursor-pointer'>Główna</a></Link>
+                <Link href='/nieruchomosci'><a className='text-purple-500 cursor-pointer'>Nieruchomości</a></Link>
+                <Link href='/blog'><a className='text-purple-500 cursor-pointer'>Blog</a></Link>
+            </ul>
         </header>
     )
 }
