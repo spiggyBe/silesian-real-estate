@@ -94,7 +94,7 @@ export default {
             type: 'string'
         },
         {
-            title: 'Agent',
+            title: 'Responsible agent',
             name: 'agent',
             type: 'string'
         }

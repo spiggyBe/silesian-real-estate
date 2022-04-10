@@ -14,11 +14,11 @@ const Banner = () => {
             <div className='absolute top-1/2 w-full text-center'>
                 <p className=' text-center w-auto bg-purple-500 py-5 opacity-70'>
                     <span className='text-sm sm:text-lg md:text-xl uppercase font-bold text-white'>
-                        Sprawdź nasze nieruchomości
+                        Check this out!
                     </span>
                 </p>
                 <button className='text-purple-500 bg-white px-10 py-4 shadow-md rounded-full font-bold my-3 hover:shadow-xl active:scale-90 transition duration-150 cursor-pointer'>
-                    Oferta
+                    More...
                 </button>
             </div>
         </div>

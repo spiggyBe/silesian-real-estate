@@ -40,8 +40,8 @@ function Navbar() {
                 <SearchIcon className='hidden md:flex h-8 bg-purple-500 text-white rounded-full p-2 cursor-pointer md:mx-2' />
             </div>
             <ul className='hidden md:flex items-center md:justify-around '>
-                <Link href='/'><a className='text-purple-500 cursor-pointer'>Główna</a></Link>
-                <Link href='/nieruchomosci'><a className='text-purple-500 cursor-pointer'>Nieruchomości</a></Link>
+                <Link href='/'><a className='text-purple-500 cursor-pointer'>Home</a></Link>
+                <Link href='/offert'><a className='text-purple-500 cursor-pointer'>Offert</a></Link>
                 <Link href='/blog'><a className='text-purple-500 cursor-pointer'>Blog</a></Link>
             </ul>
             <div className=' flex justify-end items-center md:hidden'>
@@ -67,14 +67,14 @@ function MobileNav({ open, handleOpenClose }) {
                     <a
                         className="text-lg text-purple-500"
                         onClick={handleOpenClose}>
-                        Główna
+                        Home
                     </a>
                 </Link>
-                <Link href='/nieruchomosci'>
+                <Link href='/offert'>
                     <a
                         className="text-lg text-purple-500"
                         onClick={handleOpenClose}>
-                        Nieruchomości
+                        Offert
                     </a>
                 </Link>
                 <Link href='/blog'>
