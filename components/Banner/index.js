@@ -10,6 +10,7 @@ const Banner = () => {
                 layout='fill'
                 objectFit='cover'
                 alt='image silesian region'
+                priority
             />
             <div className='absolute top-1/2 w-full text-center'>
                 <p className=' text-center w-auto bg-purple-500 py-5 opacity-70'>

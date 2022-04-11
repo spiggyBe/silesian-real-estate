@@ -14,8 +14,8 @@ export default {
             type: 'string'
         },
         {
-            title: 'Type',
-            name: 'type',
+            name: 'propertyType',
+            title: 'Property Type',
             type: 'string',
             options: {
                 list: [
