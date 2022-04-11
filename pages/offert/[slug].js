@@ -1,4 +1,6 @@
-import { sanityClient } from "../../sanity"
+import { sanityClient } from '../../sanity'
+import { urlFor } from '../../sanity'
+import Image from 'next/image'
 
 const singleAd = ({
     title,
@@ -14,12 +16,33 @@ const singleAd = ({
     propertyType
 }) => {
 
-    return (<><h1>{title}</h1><h2>{propertyType}</h2></>
+    return (
+        <>
+            <h1>{title}</h1>
+            <h2>{propertyType}</h2>
+
+            <div>{price}</div>
+            <div>{bedrooms}</div>
+            <div>{garden}</div>
+            <div>{description}</div>
+            <div>{agent}</div>
+            <Image
+                src={urlFor(mainImage).url()}
+                layout='fill'
+                objectFit='contain'
+                alt='main pic' />
+            {/* <div>{images}</div> */}
+            {/* <div>{location}</div> */}
+            {/* <div>{address}</div>*/}
+        </>
 
     )
 }
 
 export default singleAd
+
+
+
 
 export const getServerSideProps = async (context) => {
     const pageSlug = context.query.slug
