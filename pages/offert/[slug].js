@@ -3,6 +3,7 @@ import { urlFor } from '../../sanity'
 import Image from 'next/image'
 
 const singleAd = ({
+    id,
     title,
     location,
     address,
@@ -15,7 +16,7 @@ const singleAd = ({
     agent,
     propertyType
 }) => {
-
+    console.log(images)
     return (
         <>
             <h1>{title}</h1>
@@ -28,10 +29,23 @@ const singleAd = ({
             <div>{agent}</div>
             <Image
                 src={urlFor(mainImage).url()}
-                layout='fill'
+                width={200}
+                height={200}
                 objectFit='contain'
                 alt='main pic' />
-            {/* <div>{images}</div> */}
+            <div>
+                {
+                    images.map(({ _key, asset }, image) => (
+                        <Image
+                            key={_key}
+                            src={urlFor(asset).url()}
+                            width={50}
+                            height={50}
+                            alt='details'
+                        />
+                    ))
+                }
+            </div>
             {/* <div>{location}</div> */}
             {/* <div>{address}</div>*/}
         </>
@@ -47,6 +61,7 @@ export default singleAd
 export const getServerSideProps = async (context) => {
     const pageSlug = context.query.slug
     const query = `*[ _type == "property" && slug.current == $pageSlug][0]{
+    id,
     title,
     address,
     location,
@@ -70,6 +85,7 @@ export const getServerSideProps = async (context) => {
     } else {
         return {
             props: {
+                id: singleAdData.id || null,
                 title: singleAdData.title || null,
                 location: singleAdData.location || null,
                 address: singleAdData.address || null,
