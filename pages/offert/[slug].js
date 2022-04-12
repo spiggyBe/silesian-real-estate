@@ -1,6 +1,7 @@
 import { sanityClient } from '../../sanity'
 import { urlFor } from '../../sanity'
 import Image from 'next/image'
+import Link from 'next/link'
 
 const singleAd = ({
     id,
@@ -16,7 +17,7 @@ const singleAd = ({
     agent,
     propertyType
 }) => {
-    console.log(images, address)
+
     return (
         <>
             <h1>{title}</h1>
@@ -46,12 +47,17 @@ const singleAd = ({
                 <span>{address.street}&nbsp;{address.streetNo}</span>
                 <span>{address.city}</span>
             </div>
-            <h2>{propertyType}</h2>
-            <div>{bedrooms}</div>
-            <div>{garden}</div>
-            <div>{description}</div>
-            <div>{price}</div>
-            <div>{agent}</div>
+            <h2>Type: {propertyType}</h2>
+            <div>Bedrooms: {bedrooms}</div>
+            <div>Garden: {garden}</div>
+            <div>Description: <p>{description}</p></div>
+            <div>Price: {price}$</div>
+            <div>Talk to agent: {agent}</div>
+            <Link
+                href='/offert'
+                passHref>
+                <button>Back</button>
+            </Link>
         </>
     )
 }
@@ -88,18 +94,18 @@ export const getServerSideProps = async (context) => {
     } else {
         return {
             props: {
-                id: singleAdData.id || null,
-                title: singleAdData.title || null,
-                location: singleAdData.location || null,
-                address: singleAdData.address || null,
-                propertyType: singleAdData.propertyType || null,
-                mainImage: singleAdData.mainImage || null,
-                images: singleAdData.images || null,
-                price: singleAdData.price || null,
-                bedrooms: singleAdData.bedrooms || null,
-                garden: singleAdData.garden || null,
-                description: singleAdData.description || null,
-                agent: singleAdData.agent || null
+                id: singleAdData.id,
+                title: singleAdData.title,
+                location: singleAdData.location,
+                address: singleAdData.address,
+                propertyType: singleAdData.propertyType,
+                mainImage: singleAdData.mainImage,
+                images: singleAdData.images,
+                price: singleAdData.price,
+                bedrooms: singleAdData.bedrooms,
+                garden: singleAdData.garden,
+                description: singleAdData.description,
+                agent: singleAdData.agent
             }
         }
     }

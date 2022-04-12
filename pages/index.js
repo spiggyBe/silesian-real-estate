@@ -6,7 +6,7 @@ import Banner from '../components/Banner'
 import { sanityClient } from '../sanity'
 
 const Home = ({ estateData }) => {
-  console.log(estateData)
+
   return (
     <>
       <Head>
@@ -26,7 +26,7 @@ const Home = ({ estateData }) => {
 
 export default Home
 
-export const getServerSideProps = async () => {
+export const getStaticProps = async () => {
   const query = `*[_type == 'property']`
   const estateData = await sanityClient.fetch(query)
 
@@ -38,7 +38,8 @@ export const getServerSideProps = async () => {
     return {
       props: {
         estateData
-      }
+      },
+      revalidate: 6000
     }
   }
 }
