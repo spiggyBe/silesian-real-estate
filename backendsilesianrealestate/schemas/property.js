@@ -11,12 +11,16 @@ export default {
         {
             title: 'Title',
             name: 'title',
-            type: 'string'
+            type: 'string',
+            validation: Rule =>
+                Rule.required()
         },
         {
             name: 'propertyType',
             title: 'Property Type',
             type: 'string',
+            validation: Rule =>
+                Rule.required(),
             options: {
                 list: [
                     { title: 'House', value: 'house' },
@@ -31,6 +35,8 @@ export default {
             title: 'Address',
             name: 'address',
             type: 'object',
+            validation: Rule =>
+                Rule.required(),
             fields: [
                 { name: 'street', type: 'string', title: 'Street name' },
                 { name: 'streetNo', type: 'string', title: 'Street number' },
@@ -40,32 +46,54 @@ export default {
         {
             title: 'Location',
             name: 'location',
-            type: 'geopoint'
+            type: 'geopoint',
         },
         {
             title: 'Price',
             name: 'price',
-            type: 'number'
+            type: 'number',
+            validation: Rule =>
+                Rule.required()
         },
         {
             title: 'Main Image',
             name: 'mainImage',
             type: 'image',
+            validation: Rule =>
+                Rule.required(),
             options: {
                 hotspot: true
             }
+        },
+        {
+            title: 'Is Featured - will shown on Home page',
+            name: 'isFeatured',
+            type: 'string',
+            validation: Rule =>
+                Rule.required(),
+            options: {
+                list: [
+                    { title: 'Yes', value: 'yes' },
+                    { title: 'No', value: 'no' }
+                ],
+                layout: 'radio'
+            },
         },
         {
             //HAVE TO CREATE OWN SCHEMA AS NEW SCHEMA-FILE AND CREATE MY OWN TYPEs
             title: 'Images collection',
             name: 'images',
             type: 'array',
-            of: [{ type: 'propertyImage' }]
+            of: [{ type: 'propertyImage' }],
+            validation: Rule =>
+                Rule.required().min(2).warning('Please add minimum 2 of images')
         },
         {
             title: 'Bedrooms',
             name: 'bedrooms',
-            type: 'number'
+            type: 'number',
+            validation: Rule =>
+                Rule.required()
         },
         {
             title: 'Garden',
@@ -77,7 +105,9 @@ export default {
                     { title: 'No', value: 'no' }
                 ],
                 layout: 'radio'
-            }
+            },
+            validation: Rule =>
+                Rule.required()
         },
         {
             title: 'Slug',
@@ -86,17 +116,23 @@ export default {
             options: {
                 source: 'title',
                 maxLength: 100
-            }
+            },
+            validation: Rule =>
+                Rule.required()
         },
         {
             title: 'Description',
             name: 'description',
-            type: 'string'
+            type: 'string',
+            validation: Rule =>
+                Rule.required()
         },
         {
             title: 'Responsible agent',
             name: 'agent',
-            type: 'string'
+            type: 'string',
+            validation: Rule =>
+                Rule.required()
         }
     ]
 }

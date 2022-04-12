@@ -35,15 +35,17 @@ const singleAd = ({
                 alt='main pic' />
             <div>
                 {
-                    images.map(({ _key, asset }, image) => (
-                        <Image
-                            key={_key}
-                            src={urlFor(asset).url()}
-                            width={50}
-                            height={50}
-                            alt='details'
-                        />
-                    ))
+                    images && (
+                        images.map(({ _key, asset }) => (
+                            <Image
+                                key={_key}
+                                src={urlFor(asset).url()}
+                                width={50}
+                                height={50}
+                                alt='details'
+                            />
+                        ))
+                    )
                 }
             </div>
             {/* <div>{location}</div> */}
