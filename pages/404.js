@@ -1,8 +1,19 @@
+import { useEffect } from "react"
+import { useRouter } from "next/router"
 import Link from 'next/link'
 import Image from 'next/image'
 import minion from '../public/minion-404.png'
 
-const MyCustom404Page = () => {
+const Page404 = () => {
+
+    const router = useRouter()
+
+    useEffect(() => {
+        setTimeout(() => {
+            router.replace('/offert')
+        }, 5000)
+    })
+
     return (
         <div
             style={{
@@ -14,17 +25,17 @@ const MyCustom404Page = () => {
             }}
         >
             <Image src={minion} width={300} height={300} alt='minion for error 404' />
-            <h1>404 error</h1>
-            <h2>
-                <Link href="/">
+            <span>Sorry, the content you are looking for could not be found.</span>
+            <span>if You won&apos;t be auto-replaced after 5 sec:</span>
+            <div>
+                <Link href='/offert'>
                     <a style={{ color: 'blue', textDecoration: 'underline' }}>
-                        Go To Home Page
+                        Go To Offert Page
                     </a>
                 </Link>
-            </h2>
-            <p>Sorry, the content you are looking for cuould not be found.</p>
+            </div>
         </div>
     )
 }
 
-export default MyCustom404Page
+export default Page404
