@@ -4,7 +4,37 @@ import logo from '../../public/logo.png'
 import Link from 'next/link'
 import { SearchIcon } from '@heroicons/react/outline'
 
-function Navbar() {
+const MobileNav = ({ open, handleOpenClose }) => {
+    return (
+        <div className={`flex justify-end absolute top-[85px] left-0 h-screen w-screen bg-white transform ${open ? "-translate-x-0" : "-translate-x-full"} transition-transform duration-300 ease-in-out filter drop-shadow-md md:hidden`}>
+            <div className="flex flex-col items-end pr-4">
+                <Link href='/'>
+                    <a
+                        className="text-lg text-purple-500"
+                        onClick={handleOpenClose}>
+                        Home
+                    </a>
+                </Link>
+                <Link href='/offert'>
+                    <a
+                        className="text-lg text-purple-500"
+                        onClick={handleOpenClose}>
+                        Offert
+                    </a>
+                </Link>
+                <Link href='/blog'>
+                    <a
+                        className="text-lg text-purple-500"
+                        onClick={handleOpenClose}>
+                        Blog
+                    </a>
+                </Link>
+            </div>
+        </div>
+    )
+}
+
+const Navbar = () => {
 
     const [open, setOpen] = useState(false)
 
@@ -48,9 +78,9 @@ function Navbar() {
                 <div
                     className="z-50 flex relative w-8 h-8 flex-col justify-around items-center cursor-pointer md:hidden"
                     onClick={handleOpenClose}>
-                    <span className={`h-1 w-full bg-purple-500 rounded-lg transform transition duration-300 ease-in-out ${open ? "rotate-45 translate-y-2.5" : null}`} />
+                    <span className={`h-1 w-full bg-purple-500 rounded-lg transform transition duration-300 ease-in-out ${open ? "rotate-45 translate-y-[11px]" : null}`} />
                     <span className={`h-1 w-full bg-purple-500 rounded-lg transition-all duration-300 ease-in-out ${open ? "w-0" : "w-full"}`} />
-                    <span className={`h-1 w-full bg-purple-500 rounded-lg transform transition duration-300 ease-in-out ${open ? "-rotate-45 -translate-y-2.5" : null}`} />
+                    <span className={`h-1 w-full bg-purple-500 rounded-lg transform transition duration-300 ease-in-out ${open ? "-rotate-45 -translate-y-[11px]" : null}`} />
                 </div>
             </div>
         </header>
@@ -58,33 +88,3 @@ function Navbar() {
 }
 
 export default Navbar
-
-function MobileNav({ open, handleOpenClose }) {
-    return (
-        <div className={`flex justify-end absolute top-[85px] left-0 h-screen w-screen bg-white transform ${open ? "-translate-x-0" : "-translate-x-full"} transition-transform duration-300 ease-in-out filter drop-shadow-md md:hidden`}>
-            <div className="flex flex-col items-end pr-4">
-                <Link href='/'>
-                    <a
-                        className="text-lg text-purple-500"
-                        onClick={handleOpenClose}>
-                        Home
-                    </a>
-                </Link>
-                <Link href='/offert'>
-                    <a
-                        className="text-lg text-purple-500"
-                        onClick={handleOpenClose}>
-                        Offert
-                    </a>
-                </Link>
-                <Link href='/blog'>
-                    <a
-                        className="text-lg text-purple-500"
-                        onClick={handleOpenClose}>
-                        Blog
-                    </a>
-                </Link>
-            </div>
-        </div>
-    )
-}

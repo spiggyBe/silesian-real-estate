@@ -16,23 +16,17 @@ const singleAd = ({
     agent,
     propertyType
 }) => {
-    console.log(images)
+    console.log(images, address)
     return (
         <>
             <h1>{title}</h1>
-            <h2>{propertyType}</h2>
-
-            <div>{price}</div>
-            <div>{bedrooms}</div>
-            <div>{garden}</div>
-            <div>{description}</div>
-            <div>{agent}</div>
             <Image
                 src={urlFor(mainImage).url()}
                 width={200}
                 height={200}
                 objectFit='contain'
-                alt='main pic' />
+                alt='main pic'
+            />
             <div>
                 {
                     images && (
@@ -48,10 +42,17 @@ const singleAd = ({
                     )
                 }
             </div>
-            {/* <div>{location}</div> */}
-            {/* <div>{address}</div>*/}
+            <div>
+                <span>{address.street}&nbsp;{address.streetNo}</span>
+                <span>{address.city}</span>
+            </div>
+            <h2>{propertyType}</h2>
+            <div>{bedrooms}</div>
+            <div>{garden}</div>
+            <div>{description}</div>
+            <div>{price}</div>
+            <div>{agent}</div>
         </>
-
     )
 }
 
