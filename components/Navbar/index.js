@@ -2,7 +2,6 @@ import { useState } from 'react'
 import Image from 'next/image'
 import logo from '../../public/logo.png'
 import Link from 'next/link'
-import { SearchIcon } from '@heroicons/react/outline'
 
 const MobileNav = ({ open, handleOpenClose }) => {
     return (
@@ -34,56 +33,52 @@ const MobileNav = ({ open, handleOpenClose }) => {
     )
 }
 
-const Navbar = () => {
+const Navbar = ({ estateData }) => {
+    console.log(estateData)
 
     const [open, setOpen] = useState(false)
+
 
     const handleOpenClose = () => {
         setOpen(!open)
     }
 
     return (
-        <header className='grid grid-cols-3 sticky top-0 z-50 bg-white shadow-md p-5 md:px-10'>
-            <MobileNav open={open} handleOpenClose={handleOpenClose} />
-            <Link
-                href='/'
-                passHref
-            >
-                <div className='relative flex items-center cursor-pointer space-x-2'>
-                    <Image
-                        src={logo}
-                        width={50}
-                        height={50}
-                        objectFit='contain'
-                        objectPosition='left'
-                        alt='logo'
-                    />
-                    <span className='hidden text-gray-600 text-sm md:inline-block md:text-lg'>Silesia Real Estate</span>
+        <>
+            <header className='grid grid-cols-2 sticky top-0 z-50 bg-white shadow-md p-5 md:px-10'>
+                <MobileNav open={open} handleOpenClose={handleOpenClose} />
+                <Link
+                    href='/'
+                    passHref
+                >
+                    <div className='relative flex items-center cursor-pointer space-x-2'>
+                        <Image
+                            src={logo}
+                            width={50}
+                            height={50}
+                            objectFit='contain'
+                            objectPosition='left'
+                            alt='logo'
+                        />
+                        <span className='hidden text-gray-600 text-sm md:inline-block md:text-lg'>Silesia Real Estate</span>
+                    </div>
+                </Link>
+                <ul className='hidden md:flex items-center md:justify-end space-x-4 '>
+                    <Link href='/'><a className='text-purple-500 cursor-pointer'>Home</a></Link>
+                    <Link href='/blog'><a className='text-purple-500 cursor-pointer'>Blog</a></Link>
+                </ul>
+                <div className=' flex justify-end items-center md:hidden'>
+                    <div
+                        className="z-50 flex relative w-8 h-8 flex-col justify-around items-center cursor-pointer md:hidden"
+                        onClick={handleOpenClose}>
+                        <span className={`h-1 w-full bg-purple-500 rounded-lg transform transition duration-300 ease-in-out ${open ? "rotate-45 translate-y-[11px]" : null}`} />
+                        <span className={`h-1 w-full bg-purple-500 rounded-lg transition-all duration-300 ease-in-out ${open ? "w-0" : "w-full"}`} />
+                        <span className={`h-1 w-full bg-purple-500 rounded-lg transform transition duration-300 ease-in-out ${open ? "-rotate-45 -translate-y-[11px]" : null}`} />
+                    </div>
                 </div>
-            </Link>
-            <div className='flex items-center md:border-2 rounded-full p-2 md:shadow-sm'>
-                <input
-                    className='flex-grow pl-5 transparent outline-none text-sm text-gray-600 placeholder-gray-300'
-                    type='text'
-                    placeholder='Szukaj...'
-                />
-                <SearchIcon className='hidden md:flex h-8 bg-purple-500 text-white rounded-full p-2 cursor-pointer md:mx-2' />
-            </div>
-            <ul className='hidden md:flex items-center md:justify-around '>
-                <Link href='/'><a className='text-purple-500 cursor-pointer'>Home</a></Link>
-                <Link href='/offert'><a className='text-purple-500 cursor-pointer'>Offert</a></Link>
-                <Link href='/blog'><a className='text-purple-500 cursor-pointer'>Blog</a></Link>
-            </ul>
-            <div className=' flex justify-end items-center md:hidden'>
-                <div
-                    className="z-50 flex relative w-8 h-8 flex-col justify-around items-center cursor-pointer md:hidden"
-                    onClick={handleOpenClose}>
-                    <span className={`h-1 w-full bg-purple-500 rounded-lg transform transition duration-300 ease-in-out ${open ? "rotate-45 translate-y-[11px]" : null}`} />
-                    <span className={`h-1 w-full bg-purple-500 rounded-lg transition-all duration-300 ease-in-out ${open ? "w-0" : "w-full"}`} />
-                    <span className={`h-1 w-full bg-purple-500 rounded-lg transform transition duration-300 ease-in-out ${open ? "-rotate-45 -translate-y-[11px]" : null}`} />
-                </div>
-            </div>
-        </header>
+            </header>
+
+        </>
     )
 }
 

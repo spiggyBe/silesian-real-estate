@@ -1,5 +1,5 @@
-import { sanityClient } from '../../sanity'
-import { urlFor } from '../../sanity'
+import { sanityClient } from '../sanity'
+import { urlFor } from '../sanity'
 import Image from 'next/image'
 import Link from 'next/link'
 
@@ -67,7 +67,7 @@ const singleAd = ({
                 </span>
             </div>
             <Link
-                href='/offert'
+                href='/'
                 passHref>
                 <button className='rounded border2 border solid border-purple-400'>Back</button>
             </Link>
@@ -76,9 +76,6 @@ const singleAd = ({
 }
 
 export default singleAd
-
-
-
 
 export const getServerSideProps = async (context) => {
     const pageSlug = context.query.slug
